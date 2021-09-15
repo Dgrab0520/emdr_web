@@ -27,16 +27,64 @@ class PageManager {
     await _audioPlayer.seekToPrevious();
   }
 
+  playList(int index) async {
+    await _audioPlayer.seek(Duration.zero, index: index);
+  }
+
   void init() async {
     // initialize the song
     _audioPlayer = AudioPlayer();
     await _audioPlayer.setAudioSource(
       ConcatenatingAudioSource(
         children: [
-          AudioSource.uri(Uri.parse("asset:///assets/music/test.mp3")),
-          AudioSource.uri(Uri.parse("asset:///assets/music/test2.mp3")),
-          AudioSource.uri(Uri.parse("asset:///assets/music/test3.mp3")),
-          AudioSource.uri(Uri.parse("asset:///assets/music/test4.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/A Spirit Level.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Beach Walking.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Bright day.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Butterfly Traces.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Calm Ambient Nature.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Day of Mine.mp3")),
+          AudioSource.uri(
+              Uri.parse("http://jdskuhost.cafe24.com/emdrMusic/Dear Mama.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Field Of Flowers.mp3")),
+          AudioSource.uri(
+              Uri.parse("http://jdskuhost.cafe24.com/emdrMusic/Goxo.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Imaginary Waterfalls.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Inner Reflection.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Love You For It All.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Meditation.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Melancholic piano with rain and thunder.mp3")),
+          AudioSource.uri(
+              Uri.parse("http://jdskuhost.cafe24.com/emdrMusic/Morning.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Morning Light.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Nature_s Wonders.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/NeverEnding.mp3")),
+          AudioSource.uri(
+              Uri.parse("http://jdskuhost.cafe24.com/emdrMusic/Pines.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Quebec-Mornings.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Soft Dreamy.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Sweet Home.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Walking Away.mp3")),
+          AudioSource.uri(Uri.parse(
+              "http://jdskuhost.cafe24.com/emdrMusic/Yoga Spirit.mp3")),
         ],
       ),
       initialIndex: 0,

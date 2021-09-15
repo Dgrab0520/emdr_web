@@ -1,10 +1,10 @@
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
-import 'package:emdr_web/page_manager.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:emdr_web/emdr.dart';
+import 'package:emdr_web/page_manager.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-final PageManager _pageManager = PageManager();
+import 'package:get/get.dart';
 
 Icon volume = Icon(
   FontAwesomeIcons.volumeUp,
@@ -12,23 +12,26 @@ Icon volume = Icon(
 );
 
 class Music extends StatefulWidget {
-  const Music({Key? key}) : super(key: key);
+  final pageManager;
+  const Music({Key? key, required this.pageManager}) : super(key: key);
 
   @override
-  _MusicState createState() => _MusicState();
+  _MusicState createState() => _MusicState(pageManager);
 }
 
 class _MusicState extends State<Music> {
+  final pageManager;
+  _MusicState(this.pageManager);
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    //_pageManager.dispose();
+    print("music dispose");
+    //pageManager.dispose();
     super.dispose();
   }
 
@@ -38,15 +41,421 @@ class _MusicState extends State<Music> {
       children: [
         Row(
           children: [
-            Text(
-              "MUSIC",
-              style: TextStyle(
+            IconButton(
+              onPressed: () {
+                Get.defaultDialog(
+                    title: "재생목록",
+                    content: Container(
+                      height: 300,
+                      width: 300,
+                      child: ListView(
+                        children: [
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('A Spirit Level'),
+                              onTap: () {
+                                pageManager.playList(0);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Beach Walking'),
+                              onTap: () {
+                                pageManager.playList(1);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Bright day'),
+                              onTap: () {
+                                pageManager.playList(2);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Butterfly Traces'),
+                              onTap: () {
+                                pageManager.playList(3);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Calm Ambient Nature'),
+                              onTap: () {
+                                pageManager.playList(4);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Day of Mine'),
+                              onTap: () {
+                                pageManager.playList(5);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Dear Mama'),
+                              onTap: () {
+                                pageManager.playList(6);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Field Of Flowers'),
+                              onTap: () {
+                                pageManager.playList(7);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Goxo'),
+                              onTap: () {
+                                pageManager.playList(8);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Imaginary Waterfalls'),
+                              onTap: () {
+                                pageManager.playList(9);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Inner Reflection'),
+                              onTap: () {
+                                pageManager.playList(10);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Love You For It All'),
+                              onTap: () {
+                                pageManager.playList(11);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Love You For It All'),
+                              onTap: () {
+                                pageManager.playList(11);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Love You For It All'),
+                              onTap: () {
+                                pageManager.playList(11);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Meditation'),
+                              onTap: () {
+                                pageManager.playList(12);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 50,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text(
+                                  'Melancholic piano with rain and thunder'),
+                              onTap: () {
+                                pageManager.playList(13);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Morning'),
+                              onTap: () {
+                                pageManager.playList(14);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Morning Light'),
+                              onTap: () {
+                                pageManager.playList(15);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Nature_s Wonders'),
+                              onTap: () {
+                                pageManager.playList(16);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('NeverEnding'),
+                              onTap: () {
+                                pageManager.playList(17);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Pines'),
+                              onTap: () {
+                                pageManager.playList(18);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Quebec-Mornings'),
+                              onTap: () {
+                                pageManager.playList(19);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Soft Dreamy'),
+                              onTap: () {
+                                pageManager.playList(20);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Sweet Home'),
+                              onTap: () {
+                                pageManager.playList(21);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Walking Away'),
+                              onTap: () {
+                                pageManager.playList(22);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            alignment: Alignment.center,
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.music_note_2,
+                              ),
+                              title: const Text('Yoga Spirit'),
+                              onTap: () {
+                                pageManager.playList(23);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    textCancel: "닫기",
+                    buttonColor: Colors.white,
+                    cancelTextColor: Colors.black);
+              },
+              icon: Icon(
+                FontAwesomeIcons.bars,
                 color: Colors.white,
-                fontWeight: FontWeight.w900,
+                size: 20,
               ),
             ),
             IconButton(
-              onPressed: prev,
+              onPressed: pageManager.prev,
               icon: Icon(
                 FontAwesomeIcons.backward,
                 color: Colors.white,
@@ -54,7 +463,7 @@ class _MusicState extends State<Music> {
               ),
             ),
             ValueListenableBuilder<ButtonState>(
-              valueListenable: _pageManager.buttonNotifier,
+              valueListenable: pageManager.buttonNotifier,
               builder: (_, value, __) {
                 switch (value) {
                   case ButtonState.loading:
@@ -69,7 +478,10 @@ class _MusicState extends State<Music> {
                         FontAwesomeIcons.play,
                         color: Colors.white,
                       ),
-                      onPressed: _pageManager.play,
+                      onPressed: () {
+                        pageManager.play();
+                        musicStart = true;
+                      },
                     );
                   case ButtonState.playing:
                     return IconButton(
@@ -77,13 +489,16 @@ class _MusicState extends State<Music> {
                         FontAwesomeIcons.pause,
                         color: Colors.white,
                       ),
-                      onPressed: _pageManager.pause,
+                      onPressed: () {
+                        pageManager.pause();
+                        musicStart = false;
+                      },
                     );
                 }
               },
             ),
             IconButton(
-              onPressed: next,
+              onPressed: pageManager.next,
               icon: Icon(
                 FontAwesomeIcons.forward,
                 color: Colors.white,
@@ -93,7 +508,7 @@ class _MusicState extends State<Music> {
             IconButton(
               onPressed: () {
                 setState(() {
-                  _pageManager.mute();
+                  pageManager.mute();
                 });
               },
               icon: volume,
@@ -101,7 +516,7 @@ class _MusicState extends State<Music> {
           ],
         ),
         ValueListenableBuilder<ProgressBarState>(
-          valueListenable: _pageManager.progressNotifier,
+          valueListenable: pageManager.progressNotifier,
           builder: (_, value, __) {
             return ProgressBar(
               timeLabelTextStyle: TextStyle(color: Colors.white),
@@ -116,19 +531,11 @@ class _MusicState extends State<Music> {
               progress: value.current,
               buffered: value.buffered,
               total: value.total,
-              onSeek: _pageManager.seek,
+              onSeek: pageManager.seek,
             );
           },
         ),
       ],
     );
-  }
-
-  next() {
-    _pageManager.next();
-  }
-
-  prev() {
-    _pageManager.prev();
   }
 }

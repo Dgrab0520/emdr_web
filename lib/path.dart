@@ -70,9 +70,9 @@ class SampleAnimationState extends State<SampleAnimation>
   Path drawPath() {
     Size size = Size(xMax, top * 1.5);
     Path path = Path();
-    path.moveTo(0, size.height / 2);
+    path.moveTo(0, size.height * 0.6);
     path.quadraticBezierTo(
-        size.width / 2, size.height, size.width, size.height / 2);
+        size.width / 2, size.height * 1.4, size.width, size.height * 0.6);
     return path;
   }
 

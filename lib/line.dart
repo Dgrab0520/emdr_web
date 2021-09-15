@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'emdr.dart';
@@ -14,14 +16,14 @@ class _LineState extends State<Line> with TickerProviderStateMixin {
   late Animation _animation;
   late Tween _tween;
   int cTime = time;
-  double cxMax = xMax;
+  double ballLeft = 0;
 
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(
         vsync: this, duration: Duration(milliseconds: cTime));
-    _tween = Tween(begin: 0.0, end: cxMax);
+    _tween = Tween(begin: 0.0, end: xMax);
     _animation = _tween.animate(_controller)
       ..addListener(() {
         setState(() {});
@@ -33,11 +35,19 @@ class _LineState extends State<Line> with TickerProviderStateMixin {
   @override
   void dispose() {
     _controller.dispose();
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    var r = new Random();
+    double d = _animation.value;
+    if (d.toInt() == xMax.toInt() && r.nextInt(10) == 1) {
+      ballLeft = _animation.value + 3;
+    } else {
+      ballLeft = _animation.value;
+    }
     return curved();
   }
 
@@ -47,7 +57,7 @@ class _LineState extends State<Line> with TickerProviderStateMixin {
         children: <Widget>[
           Positioned(
             top: top,
-            left: _animation.value,
+            left: ballLeft,
             child: Container(
               decoration: BoxDecoration(
                   color: color, borderRadius: BorderRadius.circular(30)),

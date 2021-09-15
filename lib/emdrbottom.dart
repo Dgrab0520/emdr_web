@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+bool isPlaying = false;
+var icon = Icons.play_arrow;
+
 class EMDRBottom extends StatefulWidget {
   final ValueChanged<bool> update;
   EMDRBottom({required this.update});
@@ -15,22 +18,22 @@ class _EMDRBottomState extends State<EMDRBottom> {
 
   int min = 30;
   late Timer _timer;
-  bool _isPlaying = false;
-  var _icon = Icons.play_arrow;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    if (_isPlaying) {
+
+    if (isPlaying) {
       _start();
     }
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    _timer.cancel();
+    //_timer.cancel();
+
+    isPlaying = false;
+    icon = Icons.play_arrow;
     super.dispose();
   }
 
@@ -40,15 +43,15 @@ class _EMDRBottomState extends State<EMDRBottom> {
       children: [
         Row(
           children: [
-            Text(
-              "[EMDR+Video 쿠폰] - ",
-              style: TextStyle(color: Colors.white),
-            ),
-            Text(
-              "남은 시간 : $min분",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
-            ),
+            // Text(
+            //   "[EMDR+Video 쿠폰] - ",
+            //   style: TextStyle(color: Colors.white),
+            // ),
+            // Text(
+            //   "남은 시간 : $min분",
+            //   style:
+            //       TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
+            // ),
           ],
         ),
         Divider(
@@ -68,10 +71,15 @@ class _EMDRBottomState extends State<EMDRBottom> {
             IconButton(
               onPressed: _click,
               icon: Icon(
-                _icon,
+                icon,
                 color: Colors.white,
               ),
             ),
+            Flexible(
+                child: Text(
+              "[사진이 크면 전체화면에서 사진을 이동할 수 있습니다]",
+              style: TextStyle(color: Colors.white, fontSize: 12),
+            )),
           ],
         ),
       ],
@@ -82,12 +90,12 @@ class _EMDRBottomState extends State<EMDRBottom> {
     if (min > 0) {
       setState(() {
         update(true);
-        _isPlaying = !_isPlaying;
-        if (_isPlaying) {
-          _icon = Icons.pause;
+        isPlaying = !isPlaying;
+        if (isPlaying) {
+          icon = Icons.pause;
           _start();
         } else {
-          _icon = Icons.play_arrow;
+          icon = Icons.play_arrow;
           _pause();
         }
       });
@@ -95,22 +103,22 @@ class _EMDRBottomState extends State<EMDRBottom> {
   }
 
   void _start() {
-    _timer = Timer.periodic(Duration(minutes: 1), (timer) {
-      setState(() {
-        if (min > 0) {
-          min--;
-        } else {
-          setState(() {
-            update(false);
-            _icon = Icons.play_arrow;
-            _pause();
-          });
-        }
-      });
-    });
+    // _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    //   setState(() {
+    //     if (min > 0) {
+    //       //min--;
+    //     } else {
+    //       setState(() {
+    //         //update(false);
+    //         //_icon = Icons.play_arrow;
+    //         //_pause();
+    //       });
+    //     }
+    //   });
+    // });
   }
 
   void _pause() {
-    _timer.cancel();
+    //_timer.cancel();
   }
 }
